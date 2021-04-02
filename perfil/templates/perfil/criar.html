@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+
+<div class="row">
+
+    {% if not request.user.is_authenticated %}
+    <div class="col-lg">
+        <h2>Login</h2>
+    </div>
+    {% endif %}
+
+    <div class="col-lg">
+
+        {% block titulocadastro %}
+        <h2>Cadastro</h2>
+        {% endblock %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ userform|crispy }}
+            {{ perfilform|crispy }}
+            {{ enderecoform|crispy }}
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
