@@ -71,6 +71,10 @@ class Criar(BasePerfil):
     def post(self, *args, **kwargs):
         if not self.userform.is_valid() or not self.perfilform.is_valid() \
                 or not self.enderecoform.is_valid():
+            messages.error(
+                self.request,
+                'Existem erros no preenchimento do formulário, por favor corrija os campos em destaque.'
+            )
             return self.renderizar
 
         username = self.userform.cleaned_data.get('username')
@@ -142,7 +146,7 @@ class Criar(BasePerfil):
                 'Você fez login no sistema.'
             )
 
-            return redirect('perfil:criar')
+            return redirect('produto:carrinho')
             return self.renderizar
 
 
