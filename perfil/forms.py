@@ -19,12 +19,12 @@ class UserForm(forms.ModelForm):
     password = forms.CharField(
         required=False,
         widget=forms.PasswordInput(),
-        label='Confirmar senha'
+        label='Senha*'
     )
     password2 = forms.CharField(
         required=False,
         widget=forms.PasswordInput(),
-        label='Senha*'
+        label='Confirmar senha*'
     )
     def __init__(self, usuario=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
