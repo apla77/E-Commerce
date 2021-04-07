@@ -166,6 +166,8 @@ Thumbs.db #thumbnail cache on Windows
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/ecommerce.iml
+.idea/misc.xml
 
 # Generated files
 .idea/**/contentModel.xml
