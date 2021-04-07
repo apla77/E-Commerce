@@ -197,8 +197,9 @@ class ResumoDaCompra(View):
         return render(self.request, 'produto/resumodacompra.html', contexto)
 
 
-
-
+class Index(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'produto/index.html')
 
 
 

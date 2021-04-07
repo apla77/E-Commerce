@@ -1,0 +1,26 @@
+.codazon-loader-wrap {
+    text-align: center;
+}
+
+.codazon-loader-wrap .loader {
+    background: #FFF url(../images/ajax-loader.gif) no-repeat;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    border-radius: 100%;
+    background-size: 35px 35px;
+}
+
+.codazon-filter .products-grid {
+    background: none;
+    list-style: none;
+    border-bottom: none;
+}
+
+.codazon-filter .products-grid li {
+    list-style: none;
+}
+
+.std .codazon-filter ul {
+    padding-left: 0;
+}
