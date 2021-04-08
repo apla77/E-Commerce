@@ -35,7 +35,7 @@
             </p>
 
             <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
-                <div class="form-group">
+                <div class="form-group col-md-12">
                     <select id="select-variacoes" name="vid" class="form-control form-control-lg">
 
                         {% for variacao in produto.variacao_set.all %}
@@ -63,12 +63,20 @@
                         {% endfor %}
                     </select>
                 </div>
-
-                <div class="text-left">
+                <br>
+                <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         Adicionar ao carrinho
                     </button>
+                    </div>
+                <br>
+                <div class="form-group col-md-12">
+                <label for="">Consultar prazo e valor do frete</label>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" name="" class="form-control" id=""
+                       aria-describedby="usuarioHelp" placeholder="00000-000">
                 </div>
 
             </form>

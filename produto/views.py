@@ -4,9 +4,17 @@ from django.views.generic.detail import DetailView
 from django.views import View
 from django.contrib import messages
 from django.db.models import Q
+from rest_framework import routers, serializers, viewsets
+from produto.models import Produto
 
 from . import models
 from perfil.models import Perfil
+from .serializers import ProdutoSerializer
+
+
+class Produto_list(viewsets.ModelViewSet):
+    queryset = Produto.objects.all()
+    serializer_class = ProdutoSerializer
 
 
 class ListaProdutos(ListView):
