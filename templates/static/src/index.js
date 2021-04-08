@@ -13,12 +13,12 @@ async function produtos () {
                      <p class="card-text">${produto.descricao_curta }</p>
                      <div class="container product-price-block text-center"> 
                          ${produto.get_preco_promocional_formatado ? 
-                            `[<span class="product-price">' +
+                            `<span class="product-price"> +
                                 ${produto.get_preco_promocional_formatado}
-                            </span>, 
+                            </span> 
                             <span class="product-old-price text-muted">
                                 ${produto.get_preco_formatado}
-                            </span>] ` : `<span class="product-old-price text-muted">
+                            </span> ` : `<span class="product-old-price text-muted">
                                             ${produto.get_preco_formatado}
                                           </span>`
                          } 
