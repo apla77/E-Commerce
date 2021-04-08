@@ -1,23 +1,73 @@
-function createTable () {
-    const column = new Column('th', {}, 'Nome');
-    const column2 = new Column('th', {}, 'E-mail');
-    const column3 = new Column('th', {}, 'Telefone');
-    const column4 = new Column('th', {}, 'CPF');
-    const tr = new Row('tr', null, null, [column, column2, column3, column4]);
-    const thead = new THead(null, tr)
+async function produtos () {
+    const produtos = await ProdutoController.findAll ();
+    const divProdutos = document.getElementById ("produtos");
+    for (let produto of produtos) {
+        const newDiv = TagsView.appendChild ("div", divProdutos);
+        newDiv.innerHTML = `
+        <div class="card">  
+             <a href="{% url 'produto:detalhe' ${produto.id} %}">
+             <img class="card-img-top" src="${produto.imagem}" alt="${produto.nome}">
+             </a>  
+             <div class="card-body">
+                     <h5 class="card-title">${produto.nome}</h5>
+                     <p class="card-text">${produto.descricao_curta }</p>
+                     <div class="container product-price-block text-center"> 
+                         ${produto.get_preco_promocional_formatado ? 
+                            `[<span class="product-price">' +
+                                ${produto.get_preco_promocional_formatado}
+                            </span>, 
+                            <span class="product-old-price text-muted">
+                                ${produto.get_preco_formatado}
+                            </span>] ` : `<span class="product-old-price text-muted">
+                                            ${produto.get_preco_formatado}
+                                          </span>`
+                         } 
+                          
+                     </div>
+             </div>
+             <div class="card-footer bg-transparent border-top-light-custom text-center">
+                 <a href="{% url 'produto:detalhe' ${produto.id}}" class="btn btn-primary btn-sm m-1 btn-block">
+                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                     Comprar
+                 </a>
+             </div>
+         </div>
+        `;
+    }
 
-    const col1 = new Column("td", null, 'Antonio Almeida')
-    const col2 = new Column("td", null, 'antonio.alm_pdf@hotmail.com')
-    const col3 = new Column("td", null, '(##) #####-####')
-    const col4 = new Column("td", null, '###.###.###-##')
 
-    const row = new Row("tr", null, null, [col1, col2, col3, col4])
-    const row2 = new Row("tr", null, null, [col1, col2, col3, col4])
-    const tbody = new TBody(null, [row, row2, row2])
-    const table = new Table([{key: 'class', value: 'table table-hover'}], thead, tbody, null)
+    /*
+     <div class="card">
 
-    const theadView = new THeadView(thead)
-    const tbodyView = new TBodyView(tbody)
-    const tableView = new TableView(table, theadView, tbodyView)
-    document.getElementById('create-table').appendChild(tableView.element)
+     {% if produto.imagem %}
+     <a href="{% url 'produto:detalhe' produto.slug %}">
+     <img class="card-img-top" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+     </a>
+     {% endif %}
+
+     <div class="card-body">
+     <h5 class="card-title">{{ produto.nome }}</h5>
+     <p class="card-text">{{ produto.descricao_curta }}</p>
+     <div class="container product-price-block text-center">
+     {% if produto.preco_marketing_promocional %}
+     <span class="product-price">
+     {{ produto.preco_marketing_promocional|formata_preco }}
+     </span>
+     <span class="product-old-price text-muted">
+     {{ produto.preco_marketing|formata_preco }}
+     </span>
+     {% else %}
+     <span class="product-prece">
+     {{ produto.preco_marketing|formata_preco }}
+     </span>
+     {% endif %}
+     </div>
+     </div>
+     <div class="card-footer bg-transparent border-top-light-custom text-center">
+     <a href="{% url 'produto:detalhe' produto.slug %}" class="btn btn-primary btn-sm m-1 btn-block">
+     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+     Comprar
+     </a>
+     </div>
+     </div>*/
 }
