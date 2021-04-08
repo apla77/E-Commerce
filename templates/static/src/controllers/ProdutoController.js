@@ -1,5 +1,5 @@
 class ProdutoController {
-    static findAll = async () =>{
+    static findAll = async (divProdutos) =>{
         let produtos = []
         const uri = "/produtos/"
         await RequestController.get(uri, null, (data)=>{
@@ -10,6 +10,6 @@ class ProdutoController {
             return produtos;
         }, () => produtos = [])
 
-        return produtos;
+        ProdutoView.findAll(produtos, divProdutos)
     }
 }

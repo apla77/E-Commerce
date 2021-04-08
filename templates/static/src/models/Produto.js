@@ -1,5 +1,5 @@
 class Produto {
-    constructor ({url, id, nome, descricao_curta, get_preco_formatado, get_preco_promocional_formatado, imagem}) {
+    constructor ({url, id, nome, descricao_curta, get_preco_formatado, get_preco_promocional_formatado, imagem, slug}) {
         this._url = url;
         this._id = id;
         this._nome = nome;
@@ -7,6 +7,15 @@ class Produto {
         this._get_preco_formatado = get_preco_formatado;
         this._get_preco_promocional_formatado = get_preco_promocional_formatado;
         this._imagem = imagem;
+        this._slug = slug;
+    }
+
+    get slug () {
+        return this._slug;
+    }
+
+    set slug (value) {
+        this._slug = value;
     }
 
     get url () {
