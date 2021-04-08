@@ -13,7 +13,7 @@ from .serializers import ProdutoSerializer
 
 
 class Produto_list(viewsets.ModelViewSet):
-    queryset = Produto.objects.all()
+    queryset = Produto.objects.all().order_by('-id')
     serializer_class = ProdutoSerializer
 
 
