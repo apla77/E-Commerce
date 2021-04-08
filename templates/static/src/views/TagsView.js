@@ -8,6 +8,10 @@ class TagsView {
         return father.appendChild(child);
     }
 
+    static replaceChild(element, newElement, father){
+        return father.replaceChild(element, newElement);
+    }
+
     static append(element, father){
         father.appendChild(element)
         return element;

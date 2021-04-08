@@ -35,13 +35,26 @@ class ElementView{
         TagsView.append(element, this.element)
     }
 
+    removeAll(){
+        if (this.element.children.length > 0){
+            const children = this.element.children
+            for (let i = 0; i < children.length; i++){
+                const child = children.item(i)
+                if (child === element){
+                    child.remove()
+                    i--;
+                }
+            }
+        }
+
+        return this.element.children.length === 0;
+    }
+
     removeChildByIndex(j){
         if (this.element.children.length > 0){
-            if (this.element.children.length === 1){
-                if (this.element.children.item(j)){
-                    this.element.children.item(j).remove()
-                    return true
-                }
+            if (this.element.children.item(j)){
+                this.element.children.item(j).remove()
+                return true
             }
         }
         return false;
@@ -49,14 +62,12 @@ class ElementView{
 
     removeChildByElement(element){
         if (this.element.children.length > 0){
-            if (this.element.children.length === 1){
-                const children = this.element.children
-                for (let i = 0; i < children.length; i++){
-                    const child = children.item(i)
-                    if (child === element){
-                        child.remove()
-                        return true;
-                    }
+            const children = this.element.children
+            for (let i = 0; i < children.length; i++){
+                const child = children.item(i)
+                if (child === element){
+                    child.remove()
+                    return true;
                 }
             }
         }
@@ -67,16 +78,15 @@ class ElementView{
     replaceChildByIndex(j, newElement){
         if (this.element.children.length > 0){
             if (this.removeChildByIndex(j)){
-                this.element.appendChild(newElement)
+                const element = this.element.children.item(j)
+                TagsView.replaceChild(element, newElement, this.element)
             }
         }
     }
 
     replaceChildByElement(element, newElement){
         if (this.element.children.length > 0){
-            if (this.removeChildByElement(element)){
-                this.element.appendChild(newElement)
-            }
+            TagsView.replaceChild(element, newElement, this.element)
         }
     }
 }
