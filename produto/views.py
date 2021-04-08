@@ -182,7 +182,6 @@ class ResumoDaCompra(View):
             return redirect('perfil:criar')
 
         perfil = Perfil.objects.filter(usuario=self.request.user).exists()
-
         if not perfil:
             messages.error(
                 self.request,
@@ -205,8 +204,9 @@ class ResumoDaCompra(View):
         return render(self.request, 'produto/resumodacompra.html', contexto)
 
 
-
-
+class Index(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'produto/index.html')
 
 
 
