@@ -7789,7 +7789,7 @@ gamepad:
   label: Gamepad
   search:
     terms:
-      - controller
+      - controllers
       - d-pad
       - joystick
       - video

@@ -174,7 +174,6 @@ class ResumoDaCompra(View):
             return redirect('perfil:criar')
 
         perfil = Perfil.objects.filter(usuario=self.request.user).exists()
-
         if not perfil:
             messages.error(
                 self.request,

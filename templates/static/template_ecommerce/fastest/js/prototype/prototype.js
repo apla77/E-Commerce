@@ -3411,7 +3411,7 @@ Element.addMethods({
         },
 
         set: function(property, value) {
-            throw "Properties of Element.Layout are read-only.";
+            throw "Properties of ElementView.Layout are read-only.";
         },
 
         get: function($super, property) {
@@ -3533,7 +3533,7 @@ Element.addMethods({
         },
 
         inspect: function() {
-            return "#<Element.Layout>";
+            return "#<ElementView.Layout>";
         }
     });
 
@@ -3750,7 +3750,7 @@ Element.addMethods({
         },
 
         inspect: function() {
-            return "#<Element.Offset left: #{left} top: #{top}>".interpolate(this);
+            return "#<ElementView.Offset left: #{left} top: #{top}>".interpolate(this);
         },
 
         toString: function() {

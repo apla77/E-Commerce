@@ -812,7 +812,7 @@ var ajaxcart = {
     showPopup: function(block) {
         try {
             var _this = this;
-            //$$('body')[0].insert({bottom: new Element('div', {id: 'modalboxOptions'}).update(block)});
+            //$$('body')[0].insert({bottom: new ElementView('div', {id: 'modalboxOptions'}).update(block)});
             var element = new Element('div', {
                 id: 'modalboxOptions',
                 class: 'product-view'

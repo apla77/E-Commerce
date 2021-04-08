@@ -965,7 +965,7 @@ Ajax.InPlaceCollectionEditor.DefaultOptions = {
     loadingCollectionText: 'Loading options...'
 };
 
-// Delayed observer, like Form.Element.Observer,
+// Delayed observer, like Form.ElementView.Observer,
 // but waits for delay after last key input
 // Ideal for live-search fields
 
