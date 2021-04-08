@@ -6,16 +6,13 @@
     <title>{% block titulo %}{% endblock %}E-Commerce</title>
 </head>
 
-<body onload="createTable()">
+<body onload="produtos()">
 
     {% include 'parciais/_nav.html' %}
     <main class="container mt-4 mb-4">
 
         {% include 'parciais/_messages.html' %}
         {% block conteudo %}{% endblock %}
-        <p>Testando a tabela dinamica</p>
-        <div id="create-table">
-        </div>
     </main>
 {% include 'parciais/_footer.html' %}
 </body>
