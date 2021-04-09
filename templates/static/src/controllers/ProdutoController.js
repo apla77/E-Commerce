@@ -9,7 +9,7 @@ class ProdutoController {
 
             return produtos;
         }, () => produtos = [])
-
+        console.log(produtos)
         ProdutoView.findAll(produtos, divProdutos)
     }
 }
