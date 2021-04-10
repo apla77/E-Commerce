@@ -1,21 +1,31 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views import View
 from django.contrib import messages
 from django.db.models import Q
-from rest_framework import routers, serializers, viewsets
-from produto.models import Produto
+from rest_framework import viewsets, status
+from rest_framework.decorators import api_view, action
+from django.core import serializers
+from rest_framework.response import Response
 
+from produto.models import Produto
 from . import models
 from perfil.models import Perfil
 from .serializers import ProdutoSerializer
 
 
-class Produto_list(viewsets.ModelViewSet):
+class GetProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all().order_by('-id')
     serializer_class = ProdutoSerializer
 
+    @action(methods=['get'], detail=True, url_path='detalhe')
+    def __get_by_slug__(self, request, pk=None):
+        produto = get_object_or_404(Produto, slug=pk)
+        return Response(status=status.HTTP_200_OK, data=ProdutoSerializer(instance=produto, context={'request': request}).data)
 
 class ListaProdutos(ListView):
     model = models.Produto

@@ -64,7 +64,7 @@ class Produto(models.Model):
             self.resize_image(self.imagem, max_image_size)
 
     def __str__(self):
-        return self.nome
+        return '{nome: ' + self.nome + ', descricao_curta: '+self.descricao_curta+', slug: '+self.slug+'}'
 
 
 class Variacao(models.Model):
